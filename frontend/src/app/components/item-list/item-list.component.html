@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Gestión de Items</h1>
+  
+    <!-- Formulario de creación -->
+    <div class="form-container">
+      <h3>Crear un nuevo Item</h3>
+      <input type="text" placeholder="Nombre" [(ngModel)]="newItem.name">
+      <input type="text" placeholder="Descripción" [(ngModel)]="newItem.description">
+      <button (click)="createItem()">Crear</button>
+    </div>
+  
+    <!-- Lista de items -->
+    <div class="item-list">
+      <div *ngFor="let item of items" class="item">
+        <div *ngIf="editingItem?._id !== item._id">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+          <button (click)="editItem(item)">Editar</button>
+          <button (click)="deleteItem(item._id)">Eliminar</button>
+        </div>
+  
+        <!-- Modo edición -->
+        <div *ngIf="editingItem?._id === item._id">
+          <input type="text" [(ngModel)]="editingItem.name">
+          <input type="text" [(ngModel)]="editingItem.description">
+          <button (click)="saveItem()">Guardar</button>
+          <button (click)="editingItem = null">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
