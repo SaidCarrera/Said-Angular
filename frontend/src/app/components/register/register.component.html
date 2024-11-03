@@ -1,0 +1,19 @@
+<div class="register-container">
+    <div class="register-card">
+      <h2>Crear Cuenta</h2>
+      <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+        <div class="form-group">
+          <label for="username">Nombre de Usuario:</label>
+          <input type="text" id="username" required [(ngModel)]="username" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" required [(ngModel)]="password" name="password" class="form-control">
+        </div>
+        <button type="submit" class="register-button">Registrarse</button>
+      </form>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    </div>
+  </div>
+  

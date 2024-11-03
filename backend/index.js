@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
+const authRoutes = require('./routes/authRoutes');
 // Configuración de variables de entorno
 dotenv.config();
 
@@ -17,6 +17,7 @@ app.use(express.json());
 // Importar las rutas
 const exampleRoutes = require('./routes/exampleRoutes');
 app.use('/api', exampleRoutes);
+app.use('/api/auth', authRoutes);
 
 // Conectar a la base de datos MongoDB (sin opciones deprecated)
 mongoose.connect(process.env.MONGO_URI)
